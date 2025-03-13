@@ -15,7 +15,7 @@ jobs:
         - name: 🏁 Windows - MSVC x86_64
           platform: windows
           os: windows-2019
-          artifact-name: godot-nir-static-x86_64-msvc-debug
+          artifact-name: godot-nir-static-x86_64-msvc-release
           artifact-path: bin/libNIR.windows.x86_64.lib
           flags: use_mingw=no arch=x86_64
           
@@ -65,7 +65,7 @@ jobs:
       - name: Build Mesa (Native env)
         if: ${{ matrix.mingw != 'yes' }}
         run: |
-          scons platform=${{ matrix.platform }} ${{ matrix.flags }} optimize=speed mode=debug
+          scons platform=${{ matrix.platform }} ${{ matrix.flags }} optimize=speed
 
       - name: Build Mesa (MSYS2 env)
         if: ${{ matrix.mingw == 'yes' }}
