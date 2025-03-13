@@ -189,7 +189,7 @@ if env["platform"] == "macos":
         env.Append(LINKFLAGS=["-mmacosx-version-min=10.13"])
 elif env["platform"] == "windows":
     env.AppendUnique(CPPDEFINES=["WINVER=0x0603", "_WIN32_WINNT=0x0603"])
-    env.Append(CCFLAGS=['/MDd'])
+    env.Append(CCFLAGS=['/MD'])
 
 
 # Sanitizers.
