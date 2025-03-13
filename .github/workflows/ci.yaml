@@ -11,31 +11,6 @@ jobs:
     strategy:
       matrix:
         include:
-        # MinGW/LLVM libs using UCRT
-        - name: 🏁 Windows - MinGW/LLVM (UCRT) x86_64
-          platform: windows
-          os: windows-2019
-          artifact-name: godot-nir-static-x86_64-llvm-release
-          artifact-path: bin/libNIR.windows.x86_64.a
-          flags: use_mingw=yes arch=x86_64 use_llvm=yes mingw_prefix=$HOME/llvm-mingw
-          llvm: yes
-
-        - name: 🏁 Windows - MinGW/LLVM (UCRT) x86_32
-          platform: windows
-          os: windows-2019
-          artifact-name: godot-nir-static-x86_32-llvm-release
-          artifact-path: bin/libNIR.windows.x86_32.a
-          flags: use_mingw=yes arch=x86_32 use_llvm=yes mingw_prefix=$HOME/llvm-mingw
-          llvm: yes
-
-        - name: 🏁 Windows - MinGW/LLVM (UCRT) arm64
-          platform: windows
-          os: windows-2019
-          artifact-name: godot-nir-static-arm64-llvm-release
-          artifact-path: bin/libNIR.windows.arm64.a
-          flags: use_mingw=yes arch=arm64 use_llvm=yes mingw_prefix=$HOME/llvm-mingw
-          llvm: yes
-
         # MSVC libs
         - name: 🏁 Windows - MSVC x86_64
           platform: windows
@@ -43,42 +18,7 @@ jobs:
           artifact-name: godot-nir-static-x86_64-msvc-release
           artifact-path: bin/libNIR.windows.x86_64.lib
           flags: use_mingw=no arch=x86_64
-
-        - name: 🏁 Windows - MSVC x86_32
-          platform: windows
-          os: windows-2019
-          artifact-name: godot-nir-static-x86_32-msvc-release
-          artifact-path: bin/libNIR.windows.x86_32.lib
-          flags: use_mingw=no arch=x86_32
-
-        - name: 🏁 Windows - MSVC arm64
-          platform: windows
-          os: windows-2019
-          artifact-name: godot-nir-static-arm64-msvc-release
-          artifact-path: bin/libNIR.windows.arm64.lib
-          flags: use_mingw=no arch=arm64
-
-        # MinGW/GCC libs using MSVCRT
-        - name: 🏁 Windows - MinGW/GCC (MSVCRT) x86_64
-          platform: windows
-          os: windows-2019
-          artifact-name: godot-nir-static-x86_64-gcc-release
-          artifact-path: bin/libNIR.windows.x86_64.a
-          flags: use_mingw=yes arch=x86_64
-          mingw: yes
-          msys: mingw64
-          msysenv: x86_64
-
-        - name: 🏁 Windows - MinGW/GCC (MSVCRT) x86_32
-          platform: windows
-          os: windows-2019
-          artifact-name: godot-nir-static-x86_32-gcc-release
-          artifact-path: bin/libNIR.windows.x86_32.a
-          flags: use_mingw=yes arch=x86_32
-          mingw: yes
-          msys: mingw32
-          msysenv: i686
-
+          
     runs-on: ${{ matrix.os }}
 
     steps:
